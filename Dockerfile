@@ -85,13 +85,13 @@ RUN  apt-get update \
   && apt-get install -y wget
 
 RUN pip install gevent
-RUN su
-RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+RUN apt install sudo
+RUN sudo curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 
 #Ubuntu 18.04
-RUN curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
+RUN sudo curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
 
-RUN exit
+# RUN exit
 RUN apt-get update
 RUN ACCEPT_EULA=Y apt-get install msodbcsql17
 # optional: for bcp and sqlcmd
