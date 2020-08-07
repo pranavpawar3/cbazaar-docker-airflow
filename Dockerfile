@@ -83,6 +83,8 @@ COPY config/airflow.cfg ${AIRFLOW_USER_HOME}/airflow.cfg
 
 RUN  apt-get update \
   && apt-get install -y wget
+  
+RUN apt-get update && apt-get install -y gnupg2
 
 RUN pip install gevent
 COPY requirements.txt requirements.txt
