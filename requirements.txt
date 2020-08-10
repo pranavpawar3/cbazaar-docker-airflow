@@ -7,5 +7,6 @@ apache_airflow==1.10.10
 pandas==0.25.3
 pymongo==3.10.1
 ipython==7.15.0
+scikit-learn==0.22.1
 #newspaper==0.1.0.7
 #pyodbc
