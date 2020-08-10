@@ -95,6 +95,13 @@ RUN apt-get update \
  && apt-get install tdsodbc -y \
  && apt-get install --reinstall build-essential -y
 
+# populate /etc/freetds/freetds.conf
+# TDS Server Cbazaar
+RUN echo "[sqlserver]\n\
+host = 3.212.0.71\n\
+port = 1433\n\
+tds version = 7.0" >> /etc/freetds/freetds.conf
+
 # populate "ocbcinst.ini"
 RUN echo "[FreeTDS]\n\
 Description = FreeTDS unixODBC Driver\n\
