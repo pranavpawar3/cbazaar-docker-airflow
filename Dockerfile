@@ -110,7 +110,7 @@ Driver = FreeTDS\n\
 Description = ODBC connection via FreeTDS\n\
 Trace = No\n\
 Servername = sqlserver\n\
-Database = recommendation" >> /etc/odbcinst.ini
+Database = recommendation" >> /etc/odbc.ini
 
 # install pyodbc (and, optionally, sqlalchemy)
 RUN pip install --trusted-host pypi.python.org pyodbc==4.0.26 sqlalchemy==1.3.5
