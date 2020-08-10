@@ -99,7 +99,18 @@ RUN apt-get update \
 RUN echo "[FreeTDS]\n\
 Description = FreeTDS unixODBC Driver\n\
 Driver = /usr/lib/x86_64-linux-gnu/odbc/libtdsodbc.so\n\
-Setup = /usr/lib/x86_64-linux-gnu/odbc/libtdsS.so" >> /etc/odbcinst.ini
+Setup = /usr/lib/x86_64-linux-gnu/odbc/libtdsS.so\n\
+CPTimeout =\n\
+CPReuse =\n\
+FileUsage = 1" >> /etc/odbcinst.ini
+
+# populate "odbc.ini"
+RUN echo "[sqlserverdatasource]\n\
+Driver = FreeTDS\n\
+Description = ODBC connection via FreeTDS\n\
+Trace = No\n\
+Servername = sqlserver\n\
+Database = recommendation" >> /etc/odbcinst.ini
 
 # install pyodbc (and, optionally, sqlalchemy)
 RUN pip install --trusted-host pypi.python.org pyodbc==4.0.26 sqlalchemy==1.3.5
